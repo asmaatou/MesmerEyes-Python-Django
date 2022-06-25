@@ -1,0 +1,87 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %}MesmerEyes - Admin{% endblock title %}
+
+{% block content %}
+<div>
+    <div class="content-wrapper">
+         <!-- Container-fluid starts -->
+        <div class="btn-page">
+            <!-- Container-fluid starts -->
+            <div class="container-fluid">
+               <!-- Header start -->
+               <div class="row">
+                  <div class="main-header">
+                     <h4>Manage Orders</h4>
+                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                        <li class="breadcrumb-item">
+                           <a href="{% url 'Index_admin' %}">
+                              <i class="icofont icofont-home"></i>
+                           </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                           <a>Components </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'Management_brand' %}">Manage Brands</a>
+                        </li>
+                        <br><br>
+                     </ol>
+                  </div>
+                  
+               </div>
+               <br><br>
+               <div class="card">
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table" id="gam-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer Name</th>
+                                                <th>Status</th>
+                                                <th>order date</th>  
+                                                <th>adress</th>
+                                                <th>postal code</th>
+                                                <th>City</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for o in orders %}
+                                                <tr>
+                                                        <th>{{o.customer}}</th>
+                                                        <td>{{o.status}}</td>
+                                                        <td>{{o.order_date}}</td>
+                                                        <td>{{o.adress}}</td>
+                                                        <td>{{o.postal_code}}</td>
+                                                        <td>{{o.city}}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        
+            </div> 
+            
+        </div>     
+        
+    </div>
+    
+</div>
+
+{% endblock content %}

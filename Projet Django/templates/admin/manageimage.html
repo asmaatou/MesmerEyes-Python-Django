@@ -1,0 +1,90 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %}MesmerEyes - Admin {% endblock title %}
+
+{% block content %}
+<div>
+    <div class="content-wrapper">
+         <!-- Container-fluid starts -->
+        <div class="btn-page">
+            <!-- Container-fluid starts -->
+            <div class="container-fluid">
+               <!-- Header start -->
+               <div class="row">
+                  <div class="main-header">
+                     <h4>Manage Picture</h4>
+                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                        <li class="breadcrumb-item">
+                           <a href="{% url 'Index_admin' %}">
+                              <i class="icofont icofont-home"></i>
+                           </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                           <a>Components </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'Management_image' %}">Manage Picture</a>
+                        </li>
+                        <br><br>
+                     </ol>
+                  </div>
+                     
+               </div>
+                <button class="btn btn-danger show-form" data-url="{% url 'Management_addimg' %}">
+                 <span class="icon-plus"></span>
+                </button>
+               <br><br>
+               <div class="card">
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table" id="img-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>  
+                                                <th>Product</th>
+                                                <th>Picture</th>
+                                                <th>Update</th>     
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in img %}
+                                                <tr>
+                                                    <th scope="row">{{i.title}}</th>
+                                                        <td>{{i.id_product}}</td>
+                                                        {% if i.img %}
+                                                        <td class="w-25"><img src="{{i.img.url}}" class="img-fluid img-thumbnail"></td>
+                                                        {% endif %}
+                                                        <td><button class="btn btn-success  show-form-update" data-url="{% url 'Management_updateimg' img_id=i.pk %}">
+                                                           <span class="icon-pencil"></span>
+                                                         </button></td>
+                                                         <td><button class="btn btn-warning  show-form-delete" data-url="{% url 'Management_deleteimg' img_id=i.pk %}">
+                                                           <span class="icon-trash"></span>
+                                                         </button></td>
+                                                        
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    
+
+                                </div>
+                            </div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
+            </div> 
+            
+        </div>     
+        
+    </div>
+    
+</div>
+    
+</div>
+<div class="modal fade" id="modal-img">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+{% endblock content %}

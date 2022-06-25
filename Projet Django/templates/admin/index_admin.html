@@ -1,0 +1,102 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %}MesmerEyes - Admin {% endblock title %}
+
+{% block content %}
+    <div>
+        <div class="content-wrapper">
+                <!-- Container-fluid starts -->
+                <!-- Main content starts -->
+                <div class="container-fluid">
+                    <div class="row">
+                    <div class="main-header">
+                        <h4>Dashboard</h4>
+                    </div>
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        <div class="row">
+                            <div class="col-lg-4-w-50">
+                                <div class="card">
+                                    <div class="user-block-2">
+                                        <img class="img-fluid" src="{{ request.user.admin.picture.url }}  " style="width:200px;" alt="user-header">
+                                        <h5>{{ request.user }} </h5>
+                                        <h6>{{ request.user.admin.job }} </h6>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- 4-blocks row start -->
+                    <div class="row dashboard-header">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Products</span>
+                            <h2 class="dashboard-total-products">{{ nbrprod }}</h2>
+                            <div class="side-box">
+                                <i class="ti-eye text-warning-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Pictures</span>
+                            <h2 class="dashboard-total-products">{{ nbrimg }}</h2>
+                            <div class="side-box">
+                                <i class="ti-gallery text-success-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Brands</span>
+                            <h2 class="dashboard-total-products">{{ nbrbrand }}</h2>
+                            <div class="side-box ">
+                                <i class="ti-gift text-primary-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Categories </span>
+                            <h2 class="dashboard-total-products"><span>{{ nbrcat }}</span></h2>
+                            <div class="side-box">
+                                <i class="ti-direction-alt text-warning-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Orders</span>
+                            <h2 class="dashboard-total-products">{{ nbrorder }}</h2>
+                            <div class="side-box">
+                                <i class="ti-shopping-cart-full text-success-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Customers</span>
+                            <h2 class="dashboard-total-products">{{ nbrcust }}</h2>
+                            <div class="side-box">
+                                <i class="ti-face-smile text-danger-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-3 col-md-6">
+                        <div class="card dashboard-product">
+                            <span>Total Admins</span>
+                            <h2 class="dashboard-total-products">{{ nbradmin }}</h2>
+                            <div class="side-box">
+                                <i class="ti-user text-info-color"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                    
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+
+
+ {% endblock content %}

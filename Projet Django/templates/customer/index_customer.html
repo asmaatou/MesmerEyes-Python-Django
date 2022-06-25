@@ -1,0 +1,169 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block title %}MesmerEyes - Account{% endblock  %}
+
+{% block content %}
+
+    <!--====== Google Font ======-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/vendor.css' %} ">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/utility.css' %} ">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/app.css' %} ">
+
+
+     <!--====== Section 2 ======-->
+     <div class="u-s-p-b-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="dash">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12">
+
+                            <!--====== Dashboard Features ======-->
+                            <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                <div class="dash__pad-1">
+
+                                    <span class="dash__h1 u-s-m-b-14">Hello, {{ request.user }}</span>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
+                                <div class="dash__pad-1">
+                                    <ul class="dash__w-list">
+                                        <li>
+                                            <div class="dash__w-wrap">
+
+                                                <span class="dash__w-text">{{ nbrorder }}</span>
+
+                                                <span class="dash__w-name">Orders Created</span></div>
+                                        </li>
+                                        <li>
+                                            <div class="dash__w-wrap">
+
+                                                <span class="dash__w-text">0</span>
+
+                                                <span class="dash__w-name">Wishlist</span></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--====== End - Dashboard Features ======-->
+                        </div>
+                        <div class="col-lg-9 col-md-12">
+                        
+                            <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                <div class="dash__pad-2">
+                                    <h1 class="dash__h1 u-s-m-b-14">PERSONAL PROFILE</h1>
+                                    <div class="row">
+                                    <div class="dash__pad-3">
+                                                    <div class="row">
+                                                    <div class="col-lg-3 col-md-12">
+                                                    <img src="{{ user.picture.url }}">
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-12">
+                                                    <h5>Name: </h5><h5 class="dash__h2 u-s-m-b-8"> {{ user.name }}</h5>
+                                                    <h5>Email: </h5><h5 class="dash__h2 u-s-m-b-8"> {{ user.email }}</h5>
+                                                    <h5>Tel: </h5><h5 class="dash__h2 u-s-m-b-8"> {{ user.phone_number }}</h5>
+                                                    </div>
+                                                    </div><br>
+                                                    <a href="{% url 'Setting_customer' %}"><button class="btn btn-primary">Edit Profil</button></a>
+                                                </div><br>
+                                         <div style="margin:auto;" class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius">
+                                         <h2 style="text-align:center;" class="dash__h2 u-s-p-xy-20">RECENT ORDERS</h2>
+                                        <div class="dash__table-wrap gl-scroll">
+                                         <table class="dash__table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order n°</th>
+                                                <th>Placed On</th>
+                                                <th>Items</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for o in orders %}
+                                            <tr>
+                                                <td>{{ o.pk }}</td>
+                                                <td>{{ o.order.order_date }}</td>
+                                                <td>
+                                                <span>{{ o.product }}</span>
+                                                </td>
+                                                <td>
+                                                    <div class="dash__table-total">
+
+                                                        <span>{{ o.price }}</span>
+                                                        <div class="dash__link dash__link--brand">
+
+                                                            <a href="dash-manage-order.html">MANAGE</a></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                           
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 2 ======-->
+</div>
+<!--====== End - App Content ======-->
+
+
+    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+    <script>
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+    <!--====== Vendor Js ======-->
+    <script src="{% static 'customer/js/vendor.js' %}"></script>
+
+    <!--====== jQuery Shopnav plugin ======-->
+    <script src="{% static 'customer/js/jquery.shopnav.js' %} "></script>
+
+    <!--====== App ======-->
+    <script src="{% static 'customer/js/app.js' %} "></script>
+
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
+
+                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </noscript>
+
+{% endblock %}

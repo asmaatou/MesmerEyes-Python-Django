@@ -1,0 +1,111 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %}MesmerEyes - Admin {% endblock title %}
+
+{% block content %}
+<div>
+    <div class="content-wrapper">
+         <!-- Container-fluid starts -->
+        <div class="btn-page">
+            <!-- Container-fluid starts -->
+            <div class="container-fluid">
+               <!-- Header start -->
+               <div class="row">
+                  <div class="main-header">
+                     <h4>Manage Admins</h4>
+                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                        <li class="breadcrumb-item">
+                           <a href="{% url 'Index_admin' %}">
+                              <i class="icofont icofont-home"></i>
+                           </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                           <a>Components </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'Management_admin' %}">Manage Admins</a>
+                        </li>
+                        <br><br>
+                     </ol>
+                  </div>
+                     
+               </div>
+               
+               <br><br>
+               <div class="card">
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table" id="admin-table">
+                                        <thead>
+                                            <tr>
+                                                <th>User</th>
+                                                <th>Name</th> 
+                                                <th>Job</th>  
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Picture</th>
+                                                <th>Last Login</th>
+                                                <th>Delete</th>
+                                                <th>Update<th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for a in admin %}
+                                                {% if a.is_staff %}
+                                                <tr>
+                                                    <th scope="row">{{a.user}}</th>
+                                                        {% if not a.name %}
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                            <td>-</td> 
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                        {% else %}
+                                                            <td>{{a.name}}</td>
+                                                            <td>{{a.job}}</td>
+                                                            <td>{{a.email}}</td>
+                                                            <td>{{a.phone_number}}</td> 
+                                                            <td class="w-25"><img src="{{a.picture.url}}" class="img-fluid img-thumbnail"></td>
+                                                            <td>{{a.user.last_login}}</td>
+                                                        {% endif %}
+                                                        <td><button class="btn btn-warning  show-form-delete" data-url="{% url 'Management_deleteadmin' admin_id=a.pk %}">
+                                                           <span class="icon-trash"></span>
+                                                        </button></td> 
+                                                        <td><button class="btn btn-success  show-form-update" data-url="{% url 'Management_updateadmin' admin_id=a.pk %}">
+                                                           <span class="icon-pencil"></span>
+                                                        </button></td>
+                                                        
+                                                       
+                                                        
+                                                        
+                                                    
+                                                                          
+                                                </tr>
+                                              {% endif %}
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    
+
+                                </div>
+                            </div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div> 
+            
+        </div>     
+        
+    </div>
+    
+</div>
+    
+</div>
+<div class="modal fade" id="modal-a">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+{% endblock content %}

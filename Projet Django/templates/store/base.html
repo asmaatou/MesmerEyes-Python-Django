@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title%}{%endblock%}</title>
+    <!--====== Google Font ======-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/vendor.css' %} ">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/utility.css' %} ">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/app.css' %} ">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/magnific-popup.css' %}" type="text/css">
+     <link rel="stylesheet" type="text/css" href="{% static 'assets/icon/simple-line-icons/css/simple-line-icons.css' %} ">
+    <link rel="stylesheet" href="{% static 'store/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'store/css/style.css' %}" type="text/css">
+
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %} " type="image/x-icon">
+    <link rel="icon" href=" {% static 'assets/images/favicon.ico' %} " type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- Header -->
+    {% include 'store/header.html' %}
+
+    {% block content %}
+    
+    
+    {% endblock  %}
+
+    <!-- FOOTER -->
+   {% include 'store/footer.html' %}
+
+    <!-- Js Plugins -->
+    <script src="{% static 'store/js/jquery-3.3.1.min.js' %} "></script>
+    <script src="{% static 'store/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'store/js/jquery.nice-select.min.js' %} "></script>
+    <script src="{% static 'store/js/jquery.nicescroll.min.js' %} "></script>
+    <script src="{% static 'store/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'store/js/jquery.countdown.min.js' %} "></script>
+    <script src="{% static 'store/js/jquery.slicknav.js' %} "></script>
+    <script src="{% static 'store/js/mixitup.min.js' %} "></script>
+    <script src="{% static 'store/js/owl.carousel.min.js' %} "></script>
+    <script src="{% static 'store/js/main.js' %} "></script>
+    <script type="text/javascript" src="{% static 'store/js/cart.js' %} "></script>
+    
+    
+</body>
+
+</html>

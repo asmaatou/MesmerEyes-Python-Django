@@ -1,0 +1,132 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block title %}MesmerEyes - Account{% endblock  %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+    <!--====== Google Font ======-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/vendor.css' %} ">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/utility.css' %} ">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="{% static 'customer/css/app.css' %} ">
+
+
+     <!--====== Section 2 ======-->
+     <div class="u-s-p-b-60">
+	 <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+	<div class="dash__pad-1">
+
+		<h5 class="intro-text text-center">Profile Settings </h5>
+                                    
+	</div>
+	</div>
+
+<br>
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="dash">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12">
+
+                            <!--====== Dashboard Features ======-->
+                            <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                <div class="dash__pad-1">
+
+                                   <a href="{% url 'Index_customer' %}"><i class="icon-action-undo"></i> Back to Profile</a>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-9 col-md-12">
+                        
+                            <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                <div class="dash__pad-2">
+                                    
+                                    <div class="row">
+                                    <div style="margin-bottom:10px;" class="row">
+		
+										<div class="col-md-5">
+											
+											<div class="card card-body">
+												
+												<img class="profile-pic" src="{{request.user.customer.picture.url}}" >
+											
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<form method="POST" action="" enctype="multipart/form-data">
+												{% csrf_token %}
+												{{form | crispy}}
+												
+												<input class="btn btn-primary" type="submit" name="Update Information">
+											</form>
+										
+										</div>
+									</div>
+                                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 2 ======-->
+</div>
+<!--====== End - App Content ======-->
+
+
+    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+    <script>
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+    <!--====== Vendor Js ======-->
+    <script src="{% static 'customer/js/vendor.js' %}"></script>
+
+    <!--====== jQuery Shopnav plugin ======-->
+    <script src="{% static 'customer/js/jquery.shopnav.js' %} "></script>
+
+    <!--====== App ======-->
+    <script src="{% static 'customer/js/app.js' %} "></script>
+
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript is disabled in your browser.</h1>
+
+                            <span class="app-setting__text">Please enable JavaScript in your browser or upgrade to a JavaScript-capable browser.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </noscript>
+
+{% endblock %}

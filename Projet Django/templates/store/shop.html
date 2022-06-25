@@ -1,0 +1,231 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block title %}MesmerEyes - Products{% endblock title %}
+
+{% block content %}
+
+<style>
+.set-bg {
+	background-size: 300px;
+}
+</style>
+
+{% ifequal brand "None"  %}
+     <!-- Breadcrumb Section Begin -->
+       <section  class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Shop</h4>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'IndexView' %}">Home</a>
+                            <span>All products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <!-- Breadcrumb Section End -->
+{% else %}
+     <!-- Breadcrumb Section Begin -->
+       <section style="padding:10px;" class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'IndexView' %}">Home</a>
+                            <span>Shop</span>
+                        </div>
+                        <h5>{{brand.Name_gam}} collections</h5>
+                        <img style=" width:400px; height:auto; display:block; margin-left:auto; margin-right:auto;" src="{{brand.img_brand.url}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <!-- Breadcrumb Section End -->
+{% endifequal %}
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="shop__sidebar">
+                        <div class="shop__sidebar__search">
+                            <form method="GET" action="{% url 'search' %}" accept-charset="x-UTF-16LE-BOM">
+                                
+                                <input type="text" name="type" placeholder="Insert Informations">
+                                
+                            </form>
+                        </div>
+                        <div class="shop__sidebar__accordion">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__brand">
+                                                <ul  class="nice-scroll">
+                                                    <li><a href="{% url 'ProductsView' type='Eyeglasses' %}">Eyeglasses</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='Sunglasses' %}">Sunglasses</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseTwo">Gender</a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__brand">
+                                                <ul>
+                                                    <li><a href="{% url 'ProductsView' type='M' %}">MEN</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='W' %}">WOMEN</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='BOTH' %}">BOTH</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <div class="shop__sidebar__brand">
+                                                <ul>
+                                                    <li><a href="{% url 'ProductsView' type='MesmerEyes' %}">MesmerEyes</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='RAY-BAN' %}">RAY-BAN</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='OAKLEY' %}">OAKLEY</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='RFLKT' %}">RFLKT</a></li>
+                                                    <li><a href="{% url 'ProductsView' type='5 TO SEE' %}">5 TO SEE</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="shop__product__option">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__left">
+                                    <p>Showing {{ nbr }} results</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% if product|length_is:"0" %}
+                    <p style="text-align: center;"> Aucun Produit trouvé pour votre Recherche !</p>
+                    {% else %}
+                    <div class="row">
+                    {% for  p in product  %}
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg"  data-setbg="{{ p.img_prod.url }}">
+                                    {% if p.is_sale %}
+                                    <span class="label">Sale</span>
+                                    {% endif %}
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="{% static 'store/img/icon/heart.png' %}" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>{{ p.Name_prod }}</h6>
+                                    <a href="{% url 'detail' product_id=p.id %}" class="add-cart">View details</a>
+                                    <div class="rating">
+                                    {% if p.Rating == '1' %}
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    {% endif %}
+                                    {% if p.Rating == '2' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if p.Rating == '3' %}
+                                    
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    
+                                    {% endif %}
+                                    {% if p.Rating == '4' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if p.Rating == '5' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    
+                                    {% endif %}
+                                    </div>
+                                    <h5>{{  p.Price }}DH</h5>
+                                    <div class="product__color__select">
+                                        <label for="pc-4">
+                                            <input type="radio" id="pc-4">
+                                        </label>
+                                        <label class="active black" for="pc-5">
+                                            <input type="radio" id="pc-5">
+                                        </label>
+                                        <label class="grey" for="pc-6">
+                                            <input type="radio" id="pc-6">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {%endif%}
+                    <div style="align-content: flex-end;" class="row">
+                        <div class="col-lg-12">
+                            
+                                {% if product.has_previous %}
+                                <a style="color: black; font-size: 15px;" href="?page={{ product.previous_page_number }}"><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous</a>
+                                {% endif %}
+                                {% if product.has_next %}
+                                <a style="color: black; font-size: 15px;" href="?page={{ product.next_page_number }}">Next<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+{% endblock  %}

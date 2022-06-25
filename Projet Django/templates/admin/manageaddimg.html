@@ -1,0 +1,18 @@
+{% load crispy_forms_tags %}
+
+<form enctype="multipart/form-data" method="POST"  data-url="{% url 'Management_addimg' %}" class="create-form" >
+      {% csrf_token %}
+      <div class="modal-header">
+         <h5 class="modal-title">Add Picture</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+      <div class="modal-body">
+            {{form|crispy}}
+      </div>
+      <div class="modal-footer">
+         <button type="submit" class="btn btn-primary">Add Picture</button>
+         <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Cancel</button>
+      </div>
+</form>   

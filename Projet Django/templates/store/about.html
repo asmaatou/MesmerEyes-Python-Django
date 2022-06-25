@@ -1,0 +1,139 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block title %}MesmerEyes - About{% endblock  %}
+
+{% block content %}
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>About Us</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <span>About Us</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="about__pic">
+                        <img src="{% static 'store/img/glasses-frames-for-women.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="about__item">
+                        <h4>Who We Are ?</h4>
+                        <p>MesmerEyes an online glasses shop that makes shopping easy for our dear customers and bring joy and happiness to their eyes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="about__item">
+                        <h4>Who We Do ?</h4>
+                        <p>the largest online eyewear retailer offering a variety of both high-quality designer
+                         and house brands with a wide-range of styles and lens types including: single vision lenses,
+                         multifocal lenses, Rx sunglasses, sports glasses, contact lenses, digital protection,
+                         anti-reflective coatings and more.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="about__item">
+                        <h4>Why Choose Us</h4>
+                        <p> Our business model is transparent and simple: By cutting out the middleman we control the full process and save on many traditional expenses. These savings are passed on to our customers
+                         and that means they are paying truly just for the glasses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Testimonial Section Begin -->
+    <section class="testimonial">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-0">
+                    <div class="testimonial__text">
+                        <span class="icon_quotations"></span>
+                        <p>“Our Mission: “Help everyone see better by offering quality glasses at affordable prices” ”
+                        </p>
+                        <div class="testimonial__author">
+                            <div class="testimonial__author__pic">
+                                <img src="{% static 'store/img/testimonial-author.jpg' %} " alt="">
+                            </div>
+                            <div class="testimonial__author__text">
+                                <h5>Dairy Ayoub</h5>
+                                <p>Glasses Designer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="testimonial__pic set-bg" data-setbg="{% static 'store/img/banner-5.jpg' %}"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Section End -->
+
+    <!-- Team Section Begin -->
+    <section class="team spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Our Team</span>
+                        <h2>Meet Our Team</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'store/img/team-1.jpg' %} " alt="">
+                        <h4>Asffar Hassan</h4>
+                        <span>Website Manager</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'store/img/team-2.jpg' %} " alt="">
+                        <h4>Soukrat Anass</h4>
+                        <span>C.E.O</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'store/img/team-3.jpg' %} " alt="">
+                        <h4>Asmaa Tounsi</h4>
+                        <span>Manager Manager</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team__item">
+                        <img src="{% static 'store/img/team-4.jpg' %} " alt="">
+                        <h4>Nada Abousitre</h4>
+                        <span>Delivery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+{% endblock %}
+
+   

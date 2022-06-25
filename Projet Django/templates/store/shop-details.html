@@ -1,0 +1,328 @@
+{% extends 'store/base.html' %}
+
+{% load static %}
+
+{% block title %}MesmerEyes - Detail{% endblock  %}
+
+{% block content %}
+
+<style>
+.set-bg{
+    background-size: 120px;
+}
+.product__details__pic .nav-tabs .nav-item .nav-link .product__thumb__pic {
+    height:60px;
+}
+.product__details__pic {
+    background-color:#f5f5f5;
+}
+
+</style>
+
+    <!-- Shop Details Section Begin -->
+    <section class="shop-details">
+        <div class="product__details__pic">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__details__breadcrumb">
+                            <a href="{% url 'IndexView' %}">Home</a>
+                            <a href="{% url 'ProductsView' type='All products' %}">Shop</a>
+                            <span>Product Details</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="{{ product.img_prod.url }}">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="{{ image2.img.url }}">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="{{ image3.img.url }}">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-9">
+                        <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img id="image" src="{{ product.img_prod.url }}" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="{{ image2.img.url }}" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="{{ image3.img.url }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product__details__content">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="product__details__text">
+                            <h4>{{ product.Name_prod }}</h4>
+                            <div class="rating">
+                               {% if product.Rating == '1' %}
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    {% endif %}
+                                    {% if product.Rating == '2' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if product.Rating == '3' %}
+                                    
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    
+                                    {% endif %}
+                                    {% if product.Rating == '4' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if product.Rating == '5' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    
+                                    {% endif %}
+                                <span> - {{ product.Rating }} Reviews</span>
+                            </div>
+                            <h3>{{ product.Price }} DH</h3>
+                            <div class="product__details__cart__option">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input  class="form-control product-qty-{{product.id}}" id="productQty" type="text" value="1">
+                                    </div>
+                                </div>
+
+                                <input type="hidden" class="product-price-{{product.id}}" value="{{product.Price}}" />
+                                <input type="hidden" class="product-image-{{product.id}}" value="{{product.img_prod.url}}" />
+                                <input type="hidden" class="product-id-{{product.id}}" value="{{product.id}}" />
+		                        <input type="hidden" class="product-title-{{product.id}}" value="{{product.Name_prod}}" />
+                                <button data-index="{{product.id}}"  class="primary-btn add-to-cart">add to cart</button>
+
+                            </div>
+                            <div class="product__details__btns__option">
+                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
+                            </div>
+                            <div class="product__details__last__option">
+                                <h5><span>Guaranteed Safe Checkout</span></h5>
+                                <img src="{% static 'store/img/shop-details/details-payment.png' %}" alt="">
+                                <ul>
+                                    <li><span>Qte:</span> {{ product.nbr_stock }}</li>
+                                    <li><span>Categories:</span> {{ categorie }}</li>
+                                    <li><span>Gender:</span> {{ product.Gender }}</li>
+                                    <li><span>Tag:</span> Glasses, {{ categorie }}, {{ product.id_ga }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__details__tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                    role="tab">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
+                                    Previews(5)</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">Details</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                    <div class="product__details__tab__content">
+
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Products Infomation</h5>
+                                            <p>{{ product.Desc_prod }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Products Infomation</h5>
+                                            <p>A Pocket PC is a handheld computer, which features many of the same
+                                                capabilities as a modern PC. These handy little devices allow
+                                                individuals to retrieve and store e-mail messages, create a contact
+                                                file, coordinate appointments, surf the internet, exchange text messages
+                                                and more. Every product that is labeled as a Pocket PC must be
+                                                accompanied with specific software to operate the unit and must feature
+                                            a touchscreen and touchpad.</p>
+                                            <p>As is the case with any new technology product, the cost of a Pocket PC
+                                                was substantial during it’s early release. For approximately $700.00,
+                                                consumers could purchase one of top-of-the-line Pocket PCs in 2003.
+                                                These days, customers are finding that prices have become much more
+                                                reasonable now that the newness is wearing off. For approximately
+                                            $350.00, a new Pocket PC can now be purchased.</p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Material used</h5>
+                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
+                                                from synthetic materials, not natural like wool. Polyester suits become
+                                                creased easily and are known for not being breathable. Polyester suits
+                                                tend to have a shine to them compared to wool and cotton suits, this can
+                                                make the suit look cheap. The texture of velvet is luxurious and
+                                                breathable. Velvet is a great choice for dinner party jacket and can be
+                                            worn all year round.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Details</h5>
+                                            <p>{{ product.Details }}</p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Details Section End -->
+
+    <!-- Related Section Begin -->
+    <section class="related spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="related-title">Related Product</h3>
+                </div>
+            </div>
+            
+            <div class="row">
+                {% for related in relatedprod %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                    <div class="product__item">
+                        <div style="background-size: 250px;" class="product__item__pic set-bg" data-setbg="{{ related.img_prod.url }}">
+                            {% if related.is_sale %}
+                            <span class="label">Sale</span>
+                            {% endif %}
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="{% static 'store/img/icon/heart.png' %}" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>{{ related.Name_prod }}</h6>
+                            <a href="{% url 'detail' product_id=related.id %}" class="add-cart">View Details</a>
+                            <div class="rating">
+                                {% if related.Rating == '1' %}
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    {% endif %}
+                                    {% if related.Rating == '2' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if related.Rating == '3' %}
+                                    
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    
+                                    {% endif %}
+                                    {% if related.Rating == '4' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                   
+                                    {% endif %}
+                                    {% if related.Rating == '5' %}
+                                   
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    
+                                    {% endif %}
+                                    </div>
+                            <h5>{{ related.Price }}</h5>
+                            <div class="product__color__select">
+                                <label for="pc-1">
+                                    <input type="radio" id="pc-1">
+                                </label>
+                                <label class="active black" for="pc-2">
+                                    <input type="radio" id="pc-2">
+                                </label>
+                                <label class="grey" for="pc-3">
+                                    <input type="radio" id="pc-3">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Related Section End -->
+{% endblock  %}
+

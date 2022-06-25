@@ -1,0 +1,87 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+{% block title %}MesmerEyes - Admin {% endblock title %}
+
+{% block content %}
+<div>
+    <div class="content-wrapper">
+         <!-- Container-fluid starts -->
+        <div class="btn-page">
+            <!-- Container-fluid starts -->
+            <div class="container-fluid">
+               <!-- Header start -->
+               <div class="row">
+                  <div class="main-header">
+                     <h4>Manage Customers</h4>
+                     <ol class="breadcrumb breadcrumb-title breadcrumb-arrow">
+                        <li class="breadcrumb-item">
+                           <a href="{% url 'Index_admin' %}">
+                              <i class="icofont icofont-home"></i>
+                           </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                           <a>Components </a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{% url 'Management_customer' %}">Manage Customers</a>
+                        </li>
+                        <br><br>
+                     </ol>
+                  </div>
+                     
+               </div>
+               <br><br>
+               <div class="card">
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table" id="cat-table">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>Username</th>
+                                                <th style="text-align: center;">picture</th>
+                                                <th>Full Name</th> 
+                                                <th>Email</th>
+                                                <th>Number phone</th>
+                                               
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for c in cust %}
+                                                <tr>
+                                                    
+                                                    <td>{{c.user}}</td>
+                                                    <td scope="row"><img style="width: 15%; height: auto;margin-left: auto;margin-right: auto;display:block;" src="{{c.picture.url}}"></td,>
+                                                    <td>{{c.name}}</td>
+                                                    <td>{{c.email}}</td>
+                                                    <td>{{c.phone_number}}</td>
+                                                    
+                                                    
+                                                        
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    
+
+                                </div>
+                            </div>
+                </div>
+                <br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br>
+            </div> 
+            
+        </div>     
+        
+    </div>
+    
+</div>
+    
+</div>
+<div class="modal fade" id="modal-cat">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% load crispy_forms_tags %}
+
+<form method="POST" enctype="multipart/form-data" data-url="{% url 'Management_deleteadmin' admin.pk %}" class="delete-form">
+   {% csrf_token %}
+   <div class="modal-header">
+      <h5 class="modal-title">Delete Admin</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      <p class="lead">Are you sure you want to delete this admin?</p>
+   </div>
+   <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Delete Admin</button>
+      <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Cancel</button>
+   </div>
+</form> 
